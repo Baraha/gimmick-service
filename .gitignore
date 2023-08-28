@@ -1,0 +1,10 @@
+
+*.proto
+google
+go.mod
+go.sum
+
+
+.idea
+.vscode
+builded_app
