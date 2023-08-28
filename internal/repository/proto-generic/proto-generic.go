@@ -31,6 +31,8 @@ func (s *GRPCService) LoadSpec(protoFileName string) error {
 	if err != nil {
 		return err
 	}
+
+	// TODO need to check SHA and update service
 	for _, fd := range fdlist {
 		for _, rsd := range fd.GetServices() {
 
@@ -76,6 +78,6 @@ func (s *GRPCService) Handler(srv interface{}, ctx context.Context, dec func(int
 	jsonOutput := `{"message":"response"}`
 
 	output := dynamic.NewMessage(method.GetOutputType())
-	output.UnmarshalJSON([]byte(jsonOutput))
+	output.UnmarshalJSON([]byte(jsonOutput)) // TODO need to generate proto msg with random fields
 	return output, nil
 }
